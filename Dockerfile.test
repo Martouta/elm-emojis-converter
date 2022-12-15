@@ -1,0 +1,9 @@
+FROM node:19.3.0-buster-slim
+
+ENV ELM_VERSION=0.19.1 \
+    ELM_TEST_VERSION=0.19.1-revision7
+
+RUN apt -y update && apt install -y curl && apt clean \
+    && curl -L "https://github.com/elm/compiler/releases/download/$ELM_VERSION/binary-for-linux-64-bit.gz" \
+    | gunzip > /usr/local/bin/elm && chmod +x /usr/local/bin/elm \
+    && npm -g install "elm-test@$ELM_TEST_VERSION"
