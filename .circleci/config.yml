@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   emojis-converter-job:
     docker:
-      - image: martouta/elm-test:0.19.1-revision7
+      - image: martouta/elm-test:0.19.1-revision10
     resource_class: small
     steps:
       - checkout
