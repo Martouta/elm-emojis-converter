@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  emojis-converter-job:
+    docker:
+      - image: martouta/elm-test:0.19.1-revision7
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          name: Run Tests
+          command: cd /root/project/tests && elm-test
+workflows:
+  emojis-converter-workflow:
+    jobs:
+      - emojis-converter-job
