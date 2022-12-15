@@ -1,0 +1,19 @@
+jobs:
+  emojis-converter-job:
+    docker:
+      - image: martouta/ruby_node:v7.0
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          command: yarn global add elm@0.19.1 elm-test@0.19.1-revision7
+          name: Install Elm & Elm Test
+      - run:
+          command: cd /root/project/tests && elm-test
+          name: Run Tests
+version: 2.1
+workflows:
+  version: 2
+  emojis-converter-workflow:
+    jobs:
+      - emojis-converter-job
